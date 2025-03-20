@@ -1,0 +1,54 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+.yarn.lock
+
+# Environment variables
+.env
+.env.*
+
+# Compiled Proto files
+*.pb.js
+*.pb.d.ts
+*.proto.js
+*.proto.ts
+
+# Generated gRPC files
+**/generated/
+**/dist/
+
+# Logs
+logs
+*.log
+logs/**/*.log
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.old
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Testing
+jest/
+.nyc_output/
+
+# Miscellaneous
+*.iml
+*.lock
+*.log
+*.cache
