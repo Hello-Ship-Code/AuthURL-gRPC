@@ -1,3 +1,3 @@
-# AuthURL-gRPC
+# gRPC
 
 - gRPC
