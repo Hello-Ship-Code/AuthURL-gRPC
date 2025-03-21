@@ -1,26 +1,27 @@
-import grpc from '@grpc/grpc-js';
-import protoLoader from '@grpc/proto-loader';
+import path from 'path'
 
-const packageDef = protoLoader.loadSync("./proto/todo.proto", {});
-const grpcObject = grpc.loadPackageDefinition(packageDef);
-const todoPackage = (grpcObject as any).grpcPackage;
+import * as grpc from '@grpc/grpc-js';
+import * as protoLoader from '@grpc/proto-loader';
+
+const PROTO_PATH = path.resolve(__dirname, "proto/hello.proto");
+const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
+  keepCase: true,
+  longs: String,
+  enums: String,
+  defaults: true,
+  oneofs: true,
+});
+
+const grpcObject = grpc.loadPackageDefinition(packageDefinition) as any;
+const helloProto = (grpcObject as any).hello;
+
+const sayHello = (call: any, callback: any) => {
+  callback(null, { message: `Hello ${call.request.name} 👋🏻` })
+}
 
 const server = new grpc.Server();
 
-const createTodo = () => {
-  console.log("createTodo")
-}
-
-const readTodos = () => {
-  console.log("readTodo")
-}
-
-server.addService(todoPackage.Todo.service,
-  {
-    "createTodo": createTodo,
-    "readTodos": readTodos
-  }
-)
+server.addService(helloProto.Greeter.service, { SayHello: sayHello })
 
 server.bindAsync("0.0.0.0:40000", grpc.ServerCredentials.createInsecure(), (error, port) => {
   if (error) {

@@ -7,7 +7,8 @@
     "proto:generate": "bash proto-gen.sh",
     "start:server": "node dist/server.js",
     "start:client": "node dist/client.js",
-    "dev": "ts-node src/server.ts"
+    "dev": "ts-node src/server.ts",
+    "dev1": "ts-node src/client.ts"
   },
   "keywords": [],
   "author": "",
