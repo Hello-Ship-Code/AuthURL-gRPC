@@ -2,17 +2,12 @@ import path from 'path'
 
 import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
+import { ProtoGrpcType } from './generated/proto/hello'
 
-const PROTO_PATH = path.resolve(__dirname, "proto/hello.proto");
-const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
-  keepCase: true,
-  longs: String,
-  enums: String,
-  defaults: true,
-  oneofs: true,
-});
+const PROTO_PATH = path.resolve(__dirname, "../proto/hello.proto");
+const packageDefinition = protoLoader.loadSync(PROTO_PATH, {});
 
-const grpcObject = grpc.loadPackageDefinition(packageDefinition) as any;
+const grpcObject = grpc.loadPackageDefinition(packageDefinition) as unknown as ProtoGrpcType;
 const helloProto = (grpcObject as any).hello;
 
 const sayHello = (call: any, callback: any) => {
