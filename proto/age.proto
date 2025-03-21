@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package age;
+
+service AgeService {
+    rpc SayAge (AgeRequest) returns (AgeReply){};
+}
+
+message AgeRequest{
+  int32 age = 1;
+}
+
+message AgeReply {
+  string age = 1;
+}

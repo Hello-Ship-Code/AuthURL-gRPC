@@ -6,8 +6,8 @@
     "build": "tsc",
     "start:server": "node dist/server.js",
     "start:client": "node dist/client.js",
-    "dev": "ts-node src/server.ts",
-    "dev1": "ts-node src/client.ts",
+    "dev:server": "nodemon --ext ts --exec ts-node src/server.ts",
+    "dev:client": "ts-node src/client.ts",
     "gen:proto": "sh ./scripts/proto.sh"
   },
   "keywords": [],
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.13.10",
+    "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   }
